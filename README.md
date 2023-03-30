@@ -56,19 +56,19 @@ def draw_tetromino(tetromino, color, row, col):
             if tetromino[i][j] == 1:
                 pygame.draw.rect(screen, color, (col+j)*block_size, (row+i)*block_size, block_size)
 
-while True:
-    # Handle events
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                current_col -= 1
-            elif event.key == pygame.K_RIGHT:
-                current_col += 1
-            elif event.key == pygame.K_DOWN:
-                current_row += 1
+    while True:
+        # Handle events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    current_col -= 1
+                elif event.key == pygame.K_RIGHT:
+                    current_col += 1
+                elif event.key == pygame.K_DOWN:
+                    current_row += 1
 
     screen.fill(black)
 
