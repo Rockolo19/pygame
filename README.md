@@ -1,60 +1,60 @@
 # pygame
 # tetris
-import pygame
-import random
+    import pygame
+    import random
 
-pygame.init()
+    pygame.init()
 
-screen_width = 800
-screen_height = 600
-screen = pygame.display.set_mode((screen_width, screen_height))
+    screen_width = 800
+    screen_height = 600
+    screen = pygame.display.set_mode((screen_width, screen_height))
 
-black = (0, 0, 0)
-white = (255, 255, 255)
-red = (255, 0, 0)
-green = (0, 255, 0)
-blue = (0, 0, 255)
-yellow = (255, 255, 0)
+    black = (0, 0, 0)
+    white = (255, 255, 255)
+    red = (255, 0, 0)
+    green = (0, 255, 0)
+    blue = (0, 0, 255)
+    yellow = (255, 255, 0)
 
-block_size = 30
-rows = screen_height // block_size
-cols = screen_width // block_size
-board = [[black for _ in range(cols)] for _ in range(rows)]
-
-tetrominos = [
-    [[1, 1, 1, 1]], 
-    [[1, 1, 0], [0, 1, 1]],
-    [[0, 1, 1], [1, 1, 0]],
-    [[1, 1, 1], [0, 1, 0]],
-    [[1, 1, 0], [0, 1, 1]],
-    [[0, 1, 0], [1, 1, 1]],
-    [[1, 0, 0], [1, 1, 1]],
-]
-
-
-tetromino_colors = [
-    red,
-    green,
-    blue,
-    yellow,
-    white,
-    red,
-    green,
-    blue,
-    yellow,
-    white,
-]
-
-current_tetromino = random.choice(tetrominos)
-current_color = random.choice(tetromino_colors)
-current_row = 0
-current_col = cols // 2 - len(current_tetromino[0]) // 2
-
-def draw_tetromino(tetromino, color, row, col):
-    for i in range(len(tetromino)):
-        for j in range(len(tetromino[0])):
-            if tetromino[i][j] == 1:
-                pygame.draw.rect(screen, color, (col+j)*block_size, (row+i)*block_size, block_size)
+    block_size = 30
+    rows = screen_height // block_size
+    cols = screen_width // block_size
+    board = [[black for _ in range(cols)] for _ in range(rows)]
+    
+    tetrominos = [
+        [[1, 1, 1, 1]], 
+        [[1, 1, 0], [0, 1, 1]],
+        [[0, 1, 1], [1, 1, 0]],
+        [[1, 1, 1], [0, 1, 0]],
+        [[1, 1, 0], [0, 1, 1]],
+        [[0, 1, 0], [1, 1, 1]],
+        [[1, 0, 0], [1, 1, 1]],
+    ]
+    
+    
+    tetromino_colors = [
+        red,
+        green,
+        blue,
+        yellow,
+        white,
+        red,
+        green,
+        blue,
+        yellow,
+        white,
+    ]
+    
+    current_tetromino = random.choice(tetrominos)
+    current_color = random.choice(tetromino_colors)
+    current_row = 0
+    current_col = cols // 2 - len(current_tetromino[0]) // 2
+    
+    def draw_tetromino(tetromino, color, row, col):
+        for i in range(len(tetromino)):
+            for j in range(len(tetromino[0])):
+                if tetromino[i][j] == 1:
+                    pygame.draw.rect(screen, color, (col+j)*block_size, (row+i)*block_size, block_size)
 
     while True:
         # Handle events
